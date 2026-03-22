@@ -54,8 +54,10 @@
 
     {% for dish in dishes %}
         <div class="cart-item">
-            {{ dish.name }} - {{ dish.price }}
-            <a href="{% url 'shopping_cart:remove_from_cart' dish.id %}" class="remove">❌</a>
+            {{ dish.name }} - {{ dish.price }} грн
+            <a href="{% url 'shopping_cart:remove_from_cart' dish.id %}" class="remove">
+                <button>--</button>
+            </a>
         </div>
     {% endfor %}
     </div>
