@@ -1,9 +1,8 @@
 from django.shortcuts import render
-# from django.shortcuts import redirect
-# from django.contrib.auth.decorators import login_required
-# from .models import CartItem
-# from menu.models import Dish
-
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from .models import CartItem
+from menu.models import Dish
 
 # @login_required
 # def add_to_cart(request, dish_id):
@@ -14,7 +13,64 @@ from django.shortcuts import render
 #         dish=dish
 #     )
 
-#     return redirect('cart') 
+#     return redirect('shopping_cart:cart')  # можно 'cart' если хочешь сразу туда
+
+
+# @login_required
+# def cart(request):
+#     items = CartItem.objects.filter(user=request.user)
+#     return render(request, 'shopping_cart.html', {'items': items})
+
+
+from django.shortcuts import redirect, render
+from menu.models import Dish
+
+def add_to_cart(request, dish_id):
+    print("CLICK WORKS")
+
+    cart = request.session.get('cart', [])
+
+    cart.append(dish_id)
+
+    request.session['cart'] = cart  # ← ВАЖНО
+
+    print("NEW CART:", cart)  # ← добавь
+
+    return redirect('shopping_cart:cart')
+
+
+def cart(request):
+    cart = request.session.get('cart', [])
+
+    dishes = []
+
+    for dish_id in cart:
+        try:
+            dish = Dish.objects.get(id=dish_id)
+            dishes.append(dish)
+        except:
+            print("NOT FOUND:", dish_id)  # ← важно
+
+    print("DISHES:", dishes)  # ← главное
+
+
+
+    print("ALL DISHES:", Dish.objects.all())
+
+    return render(request, 'shopping_cart/shopping_cart.html', {'dishes': dishes})
+
+
+def remove_from_cart(request, dish_id):
+    cart = request.session.get('cart', [])
+
+    if dish_id in cart:
+        cart.remove(dish_id)
+
+    request.session['cart'] = cart
+
+    return redirect('shopping_cart:cart')
+
+
 
 
 

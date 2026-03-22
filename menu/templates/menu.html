@@ -38,11 +38,19 @@
 
     <p>{{ dish.description  }}</p>
 
+    <a href="{% url 'shopping_cart:add_to_cart' dish.id %}" class="plus">
+        <button>+</button>
+    </a>
+
 
 
     </div>
     {% endfor %}
     </div>
+
+
+
+
 
 
 

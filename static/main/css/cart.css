@@ -7,6 +7,11 @@ p {
     color: white;
 }
 
+
+h1 {
+    color: white;
+}
+
 button {
     padding: 10px 30px;
     background-color: #4b4b4b;
@@ -14,4 +19,15 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 10px;
+}
+
+
+
+.cart {
+    text-align: center;
+}
+
+.cart-item {
+    margin: 10px 0;
+    color: white;
 }

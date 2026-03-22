@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'main/css/cart.css' %}">
+</head>
+<body>
+
+    <!-- <h2>Cart</h2>
+
+    {% for dish in dishes %}
+        <p>{{ dish.name }} - {{ dish.price }}</p>
+    {% empty %}
+        <p>Корзина пуста</p>
+    {% endfor %} -->
+
+
+
+    <a href="/menu/">
+        <button>Back</button>
+    </a>
+
+
+
+    <!-- <h1>Cart</h1>
+
+    {% for dish in dishes %}
+        <p>{{ dish.name }} - {{ dish.price }}</p>
+    {% empty %}
+        <p>Корзина пуста</p>
+    {% endfor %}
+
+
+
+
+    {% for dish in dishes %}
+        <div class="cart-item">
+            {{ dish.name }} - {{ dish.price }}
+
+            <a href="{% url 'shopping_cart:remove_from_cart' dish.id %}" class="remove">
+                ❌
+            </a>
+        </div>
+    {% endfor %} -->
+
+
+    
+
+    <div class="cart">
+    <h1>Cart</h1>
+
+    {% for dish in dishes %}
+        <div class="cart-item">
+            {{ dish.name }} - {{ dish.price }}
+            <a href="{% url 'shopping_cart:remove_from_cart' dish.id %}" class="remove">❌</a>
+        </div>
+    {% endfor %}
+    </div>
+
+
+
+
+</body>
+</html>
