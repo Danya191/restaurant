@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'main/css/menu.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Menu</h1>
+
+
+    <a href="/" class="Back">
+        <button>Назад</button>
+    </a>
+
+
+    <a href="/shopping_cart/">
+        <button class="my-button">Корзина</button>
+    </a>
+
+    <br><br>
+
+
+    <div class="menu">
+    {% for dish in dishes %}
+    <div class="card">
+
+    <img src="{{ dish.image.url }}" width="250">
+
+    <h3>{{ dish.name }}</h3>
+
+    <p>{{ dish.price }} ₴</p>
+
+    <p>{{ dish.weight }}</p>
+
+    <p>{{ dish.description  }}</p>
+
+
+
+    </div>
+    {% endfor %}
+    </div>
+
+
+
+
+
+
+  
+    
+</body>
+</html>

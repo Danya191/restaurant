@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+</head>
+<body>
+    <h1>Restaurant</h1>
+
+
+    <a href="/menu/" class="menu">
+        <button>Меню</button>
+    </a>
+
+
+    <h1 class="about">О нас: </h1>
+
+    <p><b>Наш ресторан — это место, где гастрономия встречается с атмосферой уюта и изысканности. Мы используем только свежие и качественные ингредиенты, чтобы создавать блюда, которые дарят настоящее удовольствие и раскрывают богатство вкусов.
+
+    Каждое блюдо в нашем меню приготовлено с вниманием к деталям и любовью к кулинарному искусству. Мы стремимся создать пространство, где каждый гость сможет насладиться не только едой, но и особой атмосферой отдыха и гостеприимства.</b></p>
+
+
+    <a href="{% url 'login' %}" class="login">
+        <button>Войти</button>
+    </a>
+
+    <br><br>
+
+    <a href="{% url 'register' %}" class="register">
+        <button>Регистрация</button>
+    </a>
+
+
+    <br><br>
+
+    <a href="{% url 'profile' %}" class="profile">
+        <button>Профиль</button>
+    </a>
+
+    <!-- <a href="{% url 'logout' %}">
+        <button>Logout</button>
+    </a> -->
+
+    
+</body>
+</html>

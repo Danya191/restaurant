@@ -1,0 +1,15 @@
+<h2>Вход</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Войти</button>
+
+    <br><br>
+
+    <a href="/">
+        <button>Back</button>
+    </a>
+</form>

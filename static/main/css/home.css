@@ -1,0 +1,77 @@
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-top: 300px;
+    font-family: Arial;
+}
+
+
+
+
+button {
+    padding: 10px 30px;
+    background-color: #4b4b4b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+
+.about {
+    text-align: center;
+    color: white;
+
+
+}
+
+
+.profile {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin-left: 900px;
+
+
+}
+
+.login {
+    position: absolute;
+    top: 20px;
+    right: 145px;
+    margin-left: 900px;
+
+}
+
+
+.menu {
+    position: absolute;
+    margin-left: 900px;
+}
+
+.register {
+    position: absolute;
+    top: 20px;
+    right: 250px;
+    margin-left: 900px;
+
+}
+
+
+
+body {
+    background-color: black;
+}
+
+
+
+
+p {
+    color: white;
+    text-align: center;
+    width: 60%;
+    margin-left: 370px;
+    font-family: 'Times New Roman', Times, serif;
+}

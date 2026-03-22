@@ -1,0 +1,73 @@
+
+button {
+    padding: 10px 30px;
+    background-color: #4b4b4b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+
+
+.Back {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    border-radius: 10px;
+
+}
+
+
+
+.my-button {
+    padding: 10px 30px;
+    background-color: #4b4b4b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 1765px;
+
+}
+
+body {
+    background-color: black;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#222;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+}
+
+img{
+    width:100%;
+    border-radius:10px;
+}
+
+
+.description{
+    font-size:14px;
+    color:#bbb;
+    margin-bottom:10px;
+}
+
+
+
+
+
+

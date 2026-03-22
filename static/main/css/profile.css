@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+}
+
+
+p {
+    color: white;
+    text-align: center;
+}
+
+
+.logout {
+    margin-left: 902px;
+}
+
+
+.back {
+    margin-left: 908px;
+
+}
+
+
+button {
+    padding: 10px 30px;
+    background-color: #4b4b4b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
