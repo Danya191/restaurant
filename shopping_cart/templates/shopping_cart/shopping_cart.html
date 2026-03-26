@@ -9,42 +9,11 @@
 </head>
 <body>
 
-    <!-- <h2>Cart</h2>
-
-    {% for dish in dishes %}
-        <p>{{ dish.name }} - {{ dish.price }}</p>
-    {% empty %}
-        <p>Корзина пуста</p>
-    {% endfor %} -->
-
-
 
     <a href="/menu/">
         <button>Back</button>
     </a>
 
-
-
-    <!-- <h1>Cart</h1>
-
-    {% for dish in dishes %}
-        <p>{{ dish.name }} - {{ dish.price }}</p>
-    {% empty %}
-        <p>Корзина пуста</p>
-    {% endfor %}
-
-
-
-
-    {% for dish in dishes %}
-        <div class="cart-item">
-            {{ dish.name }} - {{ dish.price }}
-
-            <a href="{% url 'shopping_cart:remove_from_cart' dish.id %}" class="remove">
-                ❌
-            </a>
-        </div>
-    {% endfor %} -->
 
 
     
@@ -63,7 +32,18 @@
     </div>
 
 
+    {% for dish in dishes %}
+    <p>{{ dish.name }} — {{ dish.price }} грн.</p>
+    {% endfor %}
+
+    <hr>
+    <p><strong>Итого: {{ total }} грн.</strong></p> 
+
+
+
+
+
 
 
 </body>
-</html>
+</html>  

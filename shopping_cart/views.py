@@ -39,6 +39,9 @@ def add_to_cart(request, dish_id):
     return redirect('shopping_cart:cart')
 
 
+
+
+
 def cart(request):
     cart = request.session.get('cart', [])
 
@@ -72,7 +75,24 @@ def remove_from_cart(request, dish_id):
 
 
 
-
-
 def cart_page(request):
     return render(request, 'shoping_cart.html')
+
+
+
+
+def cart(request):
+    cart = request.session.get('cart', [])
+
+    dishes = Dish.objects.filter(id__in=cart)
+    total = sum(dish.price for dish in dishes)
+
+    request.session['cart'] = list(dishes.values_list('id', flat=True))
+
+
+    return render(request, 'shopping_cart/shopping_cart.html', {
+        'dishes': dishes,
+        'total': total
+    })
+
+
