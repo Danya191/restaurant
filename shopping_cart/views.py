@@ -41,26 +41,56 @@ def add_to_cart(request, dish_id):
 
 
 
-
 def cart(request):
     cart = request.session.get('cart', [])
 
     dishes = []
+    total = 0
 
     for dish_id in cart:
         try:
             dish = Dish.objects.get(id=dish_id)
             dishes.append(dish)
-        except:
-            print("NOT FOUND:", dish_id)  # ← важно
+            total += dish.price
+        except Dish.DoesNotExist:
+            pass
 
-    print("DISHES:", dishes)  # ← главное
+    request.session['total'] = total  # ← ВОТ КУДА ПИСАТЬ
+
+    return render(request, 'shopping_cart/shopping_cart.html', {
+        'dishes': dishes,
+        'total': total
+    })
 
 
 
-    print("ALL DISHES:", Dish.objects.all())
 
-    return render(request, 'shopping_cart/shopping_cart.html', {'dishes': dishes})
+
+
+
+
+
+
+
+# def cart(request):
+#     cart = request.session.get('cart', [])
+
+#     dishes = []
+
+#     for dish_id in cart:
+#         try:
+#             dish = Dish.objects.get(id=dish_id)
+#             dishes.append(dish)
+#         except:
+#             print("NOT FOUND:", dish_id)  # ← важно
+
+#     print("DISHES:", dishes)  # ← главное
+
+
+
+#     print("ALL DISHES:", Dish.objects.all())
+
+#     return render(request, 'shopping_cart/shopping_cart.html', {'dishes': dishes})
 
 
 def remove_from_cart(request, dish_id):
@@ -81,18 +111,18 @@ def cart_page(request):
 
 
 
-def cart(request):
-    cart = request.session.get('cart', [])
+# def cart(request):
+#     cart = request.session.get('cart', [])
 
-    dishes = Dish.objects.filter(id__in=cart)
-    total = sum(dish.price for dish in dishes)
+#     dishes = Dish.objects.filter(id__in=cart)
+#     total = sum(dish.price for dish in dishes)
 
-    request.session['cart'] = list(dishes.values_list('id', flat=True))
+#     request.session['cart'] = list(dishes.values_list('id', flat=True))
 
 
-    return render(request, 'shopping_cart/shopping_cart.html', {
-        'dishes': dishes,
-        'total': total
-    })
+#     return render(request, 'shopping_cart/shopping_cart.html', {
+#         'dishes': dishes,
+#         'total': total
+#     })
 
 

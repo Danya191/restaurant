@@ -1,0 +1,38 @@
+<form>
+    <input type="text" placeholder="Имя">
+    <br><br>
+    <input type="text" placeholder="Фамилия">
+    <br><br>
+    <input type="text" placeholder="Адрес">
+    <br><br>
+    <input type="number" placeholder="Номер телефона">
+    <br><br>
+    <input type="number" placeholder="Номер дома">
+    <br><br>
+    <input type="number" placeholder="Номер квартиры">
+
+    <br><br>
+
+    <h2>Оплата:</h2>
+
+    <div class="payment-box">
+        <div class="row">
+            <span>Чек:</span>
+            <span>{{ total }} ₴</span>
+        </div>
+
+        <div class="row">
+            <span>Доставка:</span>
+            <span>60 ₴</span>
+        </div>
+
+        <div class="row total">
+            <span>До сплати:</span>
+            <span>{{ total|add:60 }} ₴</span>
+        </div>
+    </div>
+
+    <br>
+
+    <button type="reset" onclick="alert('Заказ оформлен')">Заказать</button>
+</form>

@@ -5,6 +5,7 @@ body {
 
 p {
     color: white;
+    text-align: center;
 }
 
 
@@ -30,4 +31,16 @@ button {
 .cart-item {
     margin: 10px 0;
     color: white;
+}
+
+
+.order-button {
+    padding: 10px 30px;
+    background-color: #4b4b4b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 870px;
+    
 }
