@@ -55,7 +55,7 @@ def cart(request):
         except Dish.DoesNotExist:
             pass
 
-    request.session['total'] = total  # ← ВОТ КУДА ПИСАТЬ
+    request.session['total'] = total 
 
     return render(request, 'shopping_cart/shopping_cart.html', {
         'dishes': dishes,

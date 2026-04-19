@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/order.css' %}">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="imya" id="name">
+        <br><br>
+        <input type="text" name="surname" placeholder="familiya" id="surname">
+        <br><br>
+        <input type="text" name="address" placeholder="adres" id="address">
+        <br><br>
+        <input type="text" name="phone" placeholder="telefon" id="phone">
+        
+
+
+    <h2>Оплата:</h2>
+
+    <p>Чуек: {{ total }}</p>
+    <p>Доставка: 60</p>
+    <p>Всего: {{ total|add:60 }}</p>
+    
+
+    <button type="submit">Заказать</button>
+
+
+</form>
+    
+</body>
+</html>
+
