@@ -1,10 +1,17 @@
 from django.shortcuts import render
-from .models import Dish
+from .models import Dish, Category
 
 def menu_page(request):
-    return render(request, 'menu.html')
+    category_id = request.GET.get('category')
 
+    if category_id:
+        dishes = Dish.objects.filter(category_id=category_id)
+    else:
+        dishes = Dish.objects.all()
 
-def menu_page(request):
-    dishes = Dish.objects.all()
-    return render(request, 'menu.html', {'dishes': dishes})
+    categories = Category.objects.all()
+
+    return render(request, 'menu.html', {
+        'dishes': dishes,
+        'categories': categories
+    })
