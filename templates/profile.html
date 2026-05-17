@@ -5,27 +5,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile</title>
+
     <link rel="stylesheet" href="{% static 'main/css/profile.css' %}">
 </head>
+
 <body>
+
+<div class="profile-card">
+
     <h2>Профиль</h2>
 
-    <p>Username: {{ user.username }}</p>
+    <img src="{{ user.profile.avatar.url }}" class="avatar">
 
-    <a class="logout"  href="{% url 'logout' %}" >
+    <p>Имя: {{ user.first_name }}</p>
+
+    <p>Email: {{ user.email }}</p>
+
+
+    <a href="{% url 'edit_profile' %}">
+        <button>Изменить профиль</button>
+    </a>
+
+
+    <br><br>
+
+    <a href="{% url 'logout' %}">
         <button>Выйти</button>
     </a>
 
     <br><br>
 
-
-    <a href="/" class="back">
+    <a href="/">
         <button>Назад</button>
     </a>
 
+</div>
 
-    
 </body>
 </html>
 
