@@ -1,75 +1,92 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
 
     <link rel="stylesheet" href="{% static 'main/css/menu.css' %}">
-    <title>Document</title>
 </head>
+
 <body>
-    <h1>Menu</h1>
 
-
-    <a href="/" class="Back">
-        <button>Назад</button>
+    <!-- Кнопка назад -->
+    <a href="/" class="back-btn">
+        ← Главная
     </a>
 
-
-    <a href="/shopping_cart/">
-        <button class="my-button">Корзина</button>
+    <!-- Кнопка корзины -->
+    <a href="/shopping_cart/" class="cart-btn">
+        🛒 Корзина
     </a>
 
-    <br><br>
+    <!-- Заголовок -->
+    <div class="header">
+        <h1>MENU</h1>
+    </div>
 
-
-    <h2>Категории:</h2>
-
+    <!-- Категории -->
     <div class="categories">
-        <a href="{% url 'menu' %}">All</a>
+
+        <a href="?category=all" class="category-btn">
+            All
+        </a>
 
         {% for category in categories %}
-            <a href="?category={{ category.id }}">{{ category.name }}</a>
+            <a href="?category={{ category.id }}" class="category-btn">
+                {{ category.name }}
+            </a>
         {% endfor %}
+
     </div>
 
-
-
-
+    <!-- Карточки блюд -->
     <div class="menu">
-    {% for dish in dishes %}
-    <div class="card">
 
-    <img src="{{ dish.image.url }}" width="250">
+        {% for dish in dishes %}
 
-    <h3>{{ dish.name }}</h3>
+        <div class="card">
 
-    <p>{{ dish.price }} ₴</p>
+            <!-- Переход на страницу блюда -->
+            <a href="{% url 'dish-detail' dish.id %}" class="card-link">
 
-    <p>{{ dish.weight }}</p>
+                <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
 
-    <p>{{ dish.description  }}</p>
+                <div class="info">
 
-    <a href="{% url 'shopping_cart:add_to_cart' dish.id %}" class="plus">+</a>
+                    <h2>{{ dish.name }}</h2>
 
+                </div>
+
+            </a>
+
+            <div class="bottom">
+
+                <span class="price">
+                    {{ dish.price }} ₴
+                </span>
+
+                <a href="{% url 'shopping_cart:add_to_cart' dish.id %}">
+                    <button class="plus">
+                        +
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <h2 style="text-align:center; width:100%;">
+            Блюд нет
+        </h2>
+
+        {% endfor %}
 
     </div>
-    {% endfor %}
-    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-  
-    
 </body>
 </html>

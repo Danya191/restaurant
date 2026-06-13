@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ dish.name }}</title>
+    <link rel="stylesheet" href="{% static 'main/css/dish.css' %}">
+</head>
+<body>
+
+<a href="/menu/" class="back-btn">
+    ← Назад
+</a>
+
+<div class="dish-container">
+
+    <img src="{{ dish.image.url }}" alt="">
+
+    <h1>{{ dish.name }}</h1>
+
+    <p class="description">
+        {{ dish.description }}
+    </p>
+
+    <div class="info">
+        <span>⚖️ {{ dish.weight }}</span>
+        <span>💰 {{ dish.price }} ₴</span>
+    </div>
+
+    <div class="rating">
+        ⭐⭐⭐⭐⭐
+        <span>5.0</span>
+    </div>
+
+    <a href="{% url 'shopping_cart:add_to_cart' dish.id %}">
+        <button class="add-btn">
+            Добавить в корзину
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>

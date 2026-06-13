@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: black;
 }
 
@@ -43,4 +43,194 @@ button {
     border-radius: 10px;
     margin-left: 870px;
     
+} */
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+    font-family:'Segoe UI',sans-serif;
+}
+
+h1{
+    text-align:center;
+    margin-top:40px;
+    margin-bottom:40px;
+    font-size:45px;
+}
+
+.cart-item{
+    width:800px;
+    margin:20px auto;
+
+    background:#1a1a1a;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    transition:.3s;
+}
+
+.cart-item:hover{
+    transform:translateY(-5px);
+}
+
+.cart-item h3{
+    font-size:24px;
+}
+
+.cart-item p{
+    color:#ff6b00;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.remove{
+    background:#ff3b30;
+    color:white;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    text-decoration:none;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:24px;
+
+    transition:.3s;
+}
+
+.remove:hover{
+    transform:scale(1.1);
+}
+
+.total{
+    text-align:center;
+
+    margin-top:40px;
+
+    font-size:35px;
+
+    font-weight:bold;
+}
+
+.order-btn{
+    display:block;
+
+    width:250px;
+
+    margin:40px auto;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    background:#ff6b00;
+
+    color:white;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    font-size:20px;
+
+    transition:.3s;
+}
+
+.order-btn:hover{
+    transform:translateY(-3px);
+}
+
+.back-btn{
+    display:block;
+
+    width:200px;
+
+    margin:20px auto;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    background:#252525;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:15px;
+}
+
+.back-btn{
+    position:fixed;
+
+    top:20px;
+    left:20px;
+
+    background:#ff6b00;
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    font-size:18px;
+    font-weight:bold;
+
+    transition:.3s;
+
+    z-index:1000;
+}
+
+.back-btn:hover{
+    background:#ff8c2b;
+    transform:translateY(-3px);
+}
+
+
+
+.checkout-btn{
+    display:inline-block;
+
+    background:#ff6b00;
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+    font-weight:bold;
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.checkout-btn:hover{
+    background:#ff8c2b;
+    transform:translateY(-3px);
+}
+
+.cart-footer{
+    text-align:center;
+    margin-top:40px;
 }

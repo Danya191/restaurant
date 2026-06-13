@@ -22,9 +22,6 @@ def profile(request):
 
 
 
-from .models import Profile
-from django.shortcuts import render, redirect
-
 def edit_profile(request):
 
     profile, created = Profile.objects.get_or_create(

@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="{% static 'main/css/cart.css' %}">
 </head>
 <body>
+    <a href="/menu/" class="back-btn">
+    ← Меню
+</a>
 
 
-    <a href="/menu/">
-        <button>Назад</button>
-    </a>
 
 
 
@@ -25,7 +25,7 @@
         <div class="cart-item">
             {{ dish.name }} - {{ dish.price }} грн
             <a href="{% url 'shopping_cart:remove_from_cart' dish.id %}" class="remove">
-                <button>--</button>
+                <button>-</button>
             </a>
         </div>
     {% endfor %}
@@ -36,16 +36,20 @@
     <p>{{ dish.name }} — {{ dish.price }} грн.</p>
     {% endfor %} -->
 
-    <hr>
-    <p><strong>Итого: {{ total }} грн.</strong></p> 
 
 
 
 
-    <a href="/order/" class="order-button">
-        <button>Оформить</button>
+
+<div class="cart-footer">
+
+    <h2>Итого: {{ total }} грн</h2>
+
+    <a href="{% url 'order' %}" class="checkout-btn">
+        Оформить заказ
     </a>
 
+</div>
 
 
 

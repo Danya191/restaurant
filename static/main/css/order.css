@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: black;
 }
 
@@ -23,4 +23,162 @@ button {
 
 
 
+ */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+    font-family:'Segoe UI',sans-serif;
+}
+
+form{
+    width:700px;
+
+    margin:50px auto;
+
+    background:#1a1a1a;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+h2{
+    margin-bottom:20px;
+    text-align:center;
+}
+
+input{
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#252525;
+
+    color:white;
+
+    font-size:16px;
+}
+
+input:focus{
+    outline:none;
+}
+
+.payment-box{
+    background:#252525;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    margin-top:20px;
+}
+
+.payment-box p{
+    margin:12px 0;
+
+    font-size:18px;
+}
+
+.total-price{
+    font-size:26px;
+    color:#ff6b00;
+    font-weight:bold;
+}
+
+.order{
+    width:100%;
+
+    margin-top:20px;
+
+    background:#ff6b00;
+
+    color:white;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.order:hover{
+    transform:translateY(-3px);
+}
+
+.back{
+    display:block;
+
+    width:250px;
+
+    margin:25px auto;
+
+    text-align:center;
+
+    text-decoration:none;
+}
+
+.back button{
+    width:100%;
+
+    background:#252525;
+
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    cursor:pointer;
+}
+
+
+.back-btn{
+    position:fixed;
+
+    top:20px;
+    left:20px;
+
+    background:#ff6b00;
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    font-size:18px;
+    font-weight:bold;
+
+    transition:.3s;
+
+    z-index:1000;
+}
+
+.back-btn:hover{
+    background:#ff8c2b;
+    transform:translateY(-3px);
+}

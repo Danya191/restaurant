@@ -1,4 +1,4 @@
-<h2>Регистрация</h2>
+<!-- <h2>Регистрация</h2>
 
 <form method="post">
     {% csrf_token %}
@@ -10,4 +10,44 @@
 
 <a href="/">
     <button>Назад</button>
-</a>
+</a> -->
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'main/css/profile.css' %}">
+</head>
+<body>
+
+<div class="profile-card">
+
+    <h2>Регистрация</h2>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Зарегистрироваться
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/">
+        <button>
+            Назад
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>

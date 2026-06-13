@@ -16,7 +16,8 @@ class Dish(models.Model):
     weight = models.CharField(max_length=50)
     image = models.ImageField(upload_to='dishes/')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
-    
+
+    rating = models.FloatField(default=5.0)
 
     def __str__(self):
         return self.name

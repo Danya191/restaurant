@@ -10,6 +10,13 @@
     
 </head>
 <body>
+
+
+
+
+
+
+
     <form method="POST">
         {% csrf_token %}
 
@@ -23,11 +30,19 @@
         
 
 
-    <h2>Оплата:</h2>
+<div class="payment-box">
 
-    <p>Чуек: {{ total }}</p>
-    <p>Доставка: 60</p>
-    <p>Всего: {{ total|add:60 }}</p>
+    <h2>Оплата</h2>
+
+    <p>Заказ: {{ total }} ₴</p>
+
+    <p>Доставка: 60 ₴</p>
+
+    <p class="total-price">
+        Итого: {{ total|add:60 }} ₴
+    </p>
+
+</div>
     
 
     <button type="submit" class="order">Заказать</button>

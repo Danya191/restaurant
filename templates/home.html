@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,10 +40,90 @@
         <button>Профиль</button>
     </a>
 
-    <!-- <a href="{% url 'logout' %}">
-        <button>Logout</button>
-    </a> -->
 
     
+</body>
+</html> -->
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant</title>
+
+    <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+</head>
+<body>
+
+<nav>
+
+    <div class="logo">
+         Restaurant
+    </div>
+
+    <div class="nav-buttons">
+
+        <a href="{% url 'login' %}">
+            <button>Войти</button>
+        </a>
+
+        <a href="{% url 'register' %}">
+            <button>Регистрация</button>
+        </a>
+
+        <a href="{% url 'profile' %}">
+            <button>Профиль</button>
+        </a>
+
+    </div>
+
+</nav>
+
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Вкусная еда <br>
+            с доставкой за 30 минут
+        </h1>
+
+        <p>
+            Пицца, суши, бургеры, напитки и многое другое.
+        </p>
+
+        <a href="/menu/">
+            <button class="menu-btn">
+                Смотреть меню
+            </button>
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="features">
+
+    <div class="feature">
+        
+        <h3>Быстрая доставка</h3>
+    </div>
+
+    <div class="feature">
+        
+        <h3>Свежие продукты</h3>
+    </div>
+
+    <div class="feature">
+        
+        <h3>Лучший сервис</h3>
+    </div>
+
+</section>
+
 </body>
 </html>
