@@ -182,3 +182,41 @@ input:focus{
     background:#ff8c2b;
     transform:translateY(-3px);
 }
+
+
+
+.back{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    background: #ff6b00;
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: .3s;
+
+    width: auto; /* важно */
+    display: inline-block;
+}
+
+.back:hover{
+    background: #ff8c2b;
+    transform: translateY(-2px);
+}
+
+.footer{
+    text-align:center;
+
+    padding:30px;
+
+    background:#151515;
+
+    margin-top:160px;
+}

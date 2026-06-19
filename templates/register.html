@@ -1,31 +1,19 @@
-<!-- <h2>Регистрация</h2>
-
-<form method="post">
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <button type="submit">Зарегистрироваться</button>
-</form>
-
-<a href="/">
-    <button>Назад</button>
-</a> -->
-
-
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Регистрация</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ t.register }}</title>
+
     <link rel="stylesheet" href="{% static 'main/css/profile.css' %}">
 </head>
 <body>
 
 <div class="profile-card">
 
-    <h2>Регистрация</h2>
+    <h2>{{ t.register }}</h2>
 
     <form method="post">
 
@@ -34,7 +22,7 @@
         {{ form.as_p }}
 
         <button type="submit">
-            Зарегистрироваться
+            {{ t.register }}
         </button>
 
     </form>
@@ -43,7 +31,7 @@
 
     <a href="/">
         <button>
-            Назад
+            ← {{ t.home }}
         </button>
     </a>
 

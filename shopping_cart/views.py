@@ -3,23 +3,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from .models import CartItem
 from menu.models import Dish
+from translations import LANGUAGES
 
-# @login_required
-# def add_to_cart(request, dish_id):
-#     dish = Dish.objects.get(id=dish_id)
-
-#     CartItem.objects.create(
-#         user=request.user,
-#         dish=dish
-#     )
-
-#     return redirect('shopping_cart:cart')  # можно 'cart' если хочешь сразу туда
-
-
-# @login_required
-# def cart(request):
-#     items = CartItem.objects.filter(user=request.user)
-#     return render(request, 'shopping_cart.html', {'items': items})
 
 
 from django.shortcuts import redirect, render
@@ -42,6 +27,9 @@ def add_to_cart(request, dish_id):
 
 
 def cart(request):
+
+    lang = request.session.get("lang", "ru")
+
     cart = request.session.get('cart', [])
 
     dishes = []
@@ -55,42 +43,14 @@ def cart(request):
         except Dish.DoesNotExist:
             pass
 
-    request.session['total'] = total 
+    request.session['total'] = total
 
     return render(request, 'shopping_cart/shopping_cart.html', {
         'dishes': dishes,
-        'total': total
+        'total': total,
+        't': LANGUAGES[lang]
     })
 
-
-
-
-
-
-
-
-
-
-
-# def cart(request):
-#     cart = request.session.get('cart', [])
-
-#     dishes = []
-
-#     for dish_id in cart:
-#         try:
-#             dish = Dish.objects.get(id=dish_id)
-#             dishes.append(dish)
-#         except:
-#             print("NOT FOUND:", dish_id)  # ← важно
-
-#     print("DISHES:", dishes)  # ← главное
-
-
-
-#     print("ALL DISHES:", Dish.objects.all())
-
-#     return render(request, 'shopping_cart/shopping_cart.html', {'dishes': dishes})
 
 
 def remove_from_cart(request, dish_id):
@@ -110,19 +70,5 @@ def cart_page(request):
 
 
 
-
-# def cart(request):
-#     cart = request.session.get('cart', [])
-
-#     dishes = Dish.objects.filter(id__in=cart)
-#     total = sum(dish.price for dish in dishes)
-
-#     request.session['cart'] = list(dishes.values_list('id', flat=True))
-
-
-#     return render(request, 'shopping_cart/shopping_cart.html', {
-#         'dishes': dishes,
-#         'total': total
-#     })
 
 

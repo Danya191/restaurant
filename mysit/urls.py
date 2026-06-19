@@ -20,6 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from users import views
+from django.conf.urls.i18n import i18n_patterns
+from django.urls import include, path
 
 
 urlpatterns = [
@@ -33,6 +35,7 @@ urlpatterns = [
     path('', include('users.urls')),
     path('profile/', views.profile, name='profile'),
     path('order/', include('order.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

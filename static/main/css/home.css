@@ -1,80 +1,4 @@
-/* 
-h1 {
-    text-align: center;
-    color: white;
-    margin-top: 300px;
-    font-family: Arial;
-}
 
-
-
-
-button {
-    padding: 10px 30px;
-    background-color: #4b4b4b;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-
-
-.about {
-    text-align: center;
-    color: white;
-
-
-}
-
-
-.profile {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    margin-left: 900px;
-
-
-}
-
-.login {
-    position: absolute;
-    top: 20px;
-    right: 145px;
-    margin-left: 900px;
-
-}
-
-
-.menu {
-    position: absolute;
-    margin-left: 900px;
-}
-
-.register {
-    position: absolute;
-    top: 20px;
-    right: 250px;
-    margin-left: 900px;
-
-}
-
-
-
-body {
-    background-color: black;
-}
-
-
-
-
-p {
-    color: white;
-    text-align: center;
-    width: 60%;
-    margin-left: 370px;
-    font-family: 'Times New Roman', Times, serif;
-} */
 
 
 *{
@@ -230,3 +154,43 @@ button:hover{
     background:#ff8c2b;
     transform:translateY(-3px);
 }
+
+
+.nav-buttons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.lang-switcher{
+    display:flex;
+    gap:10px;
+    margin-left:15px;
+}
+
+.lang-switcher a{
+    text-decoration:none;
+    color:white;
+    background:#252525;
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.lang-switcher a:hover{
+    background:#ff6b00;
+}
+
+
+.footer{
+    text-align:center;
+
+    padding:30px;
+
+    background:#151515;
+
+    margin-top:60px;
+}
+
+

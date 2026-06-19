@@ -1,11 +1,11 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>{{ t.profile }}</title>
 
     <link rel="stylesheet" href="{% static 'main/css/profile.css' %}">
 </head>
@@ -14,41 +14,33 @@
 
 <div class="profile-card">
 
-    <h2>Профиль</h2>
+    <h2>{{ t.profile }}</h2>
 
-    <img src="{{ user.profile.avatar.url }}" class="avatar">
+    {% if user.profile.avatar %}
+        <img src="{{ user.profile.avatar.url }}" class="avatar">
+    {% endif %}
 
-    <p>Имя: {{ user.first_name }}</p>
+    <p>{{ t.name }}: {{ user.first_name }}</p>
 
-    <p>Email: {{ user.email }}</p>
-
+    <p>{{ t.email }}: {{ user.email }}</p>
 
     <a href="{% url 'edit_profile' %}">
-        <button>Изменить профиль</button>
+        <button>{{ t.edit_profile }}</button>
     </a>
-
 
     <br><br>
 
     <a href="{% url 'logout' %}">
-        <button>Выйти</button>
+        <button>{{ t.logout }}</button>
     </a>
 
     <br><br>
 
     <a href="/">
-        <button>Назад</button>
+        <button>← {{ t.home }}</button>
     </a>
 
 </div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-

@@ -1,60 +1,71 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ t.cart_title }}</title>
+
     <link rel="stylesheet" href="{% static 'main/css/cart.css' %}">
 </head>
 <body>
+
+    <!-- Кнопка назад -->
     <a href="/menu/" class="back-btn">
-    ← Меню
-</a>
+        ← {{ t.menu }}
+    </a>
 
-
-
-
-
-    
-
+    <!-- Корзина -->
     <div class="cart">
-    <h1>Корзина</h1>
 
-    {% for dish in dishes %}
-        <div class="cart-item">
-            {{ dish.name }} - {{ dish.price }} грн
-            <a href="{% url 'shopping_cart:remove_from_cart' dish.id %}" class="remove">
-                <button>-</button>
-            </a>
-        </div>
-    {% endfor %}
+        <h1>{{ t.cart_title }}</h1>
+
+        {% if dishes %}
+
+            {% for dish in dishes %}
+
+            <div class="cart-item">
+
+                <div>
+                    <strong>{{ dish.name }}</strong>
+                    <p>{{ dish.price }} ₴</p>
+                </div>
+
+                <a href="{% url 'shopping_cart:remove_from_cart' dish.id %}" class="remove">
+                    <button>-</button>
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <h2>{{ t.empty_cart }}</h2>
+
+        {% endif %}
+
+    </div>
+
+    <!-- Нижняя панель -->
+    <div class="cart-footer">
+
+        <h2>
+            {{ t.total }}: {{ total }} ₴
+        </h2>
+
+        <a href="{% url 'order' %}" class="checkout-btn">
+            {{ t.checkout }}
+        </a>
+
     </div>
 
 
-    <!-- {% for dish in dishes %}
-    <p>{{ dish.name }} — {{ dish.price }} грн.</p>
-    {% endfor %} -->
-
-
-
-
-
-
-<div class="cart-footer">
-
-    <h2>Итого: {{ total }} грн</h2>
-
-    <a href="{% url 'order' %}" class="checkout-btn">
-        Оформить заказ
-    </a>
-
-</div>
-
-
-
-
+<footer class="footer">
+    <p>© 2025 Restaurant</p>
+</footer>
 
 
 </body>
-</html>  
+</html>

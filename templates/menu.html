@@ -5,88 +5,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+    <title>{{ t.menu }}</title>
 
     <link rel="stylesheet" href="{% static 'main/css/menu.css' %}">
 </head>
 
 <body>
 
-    <!-- Кнопка назад -->
+    <div class="top-panel">
+
     <a href="/" class="back-btn">
-        ← Главная
+        {{ t.home }}
     </a>
 
-    <!-- Кнопка корзины -->
-    <a href="/shopping_cart/" class="cart-btn">
-        🛒 Корзина
-    </a>
+    <div class="right-panel">
 
-    <!-- Заголовок -->
-    <div class="header">
-        <h1>MENU</h1>
-    </div>
 
-    <!-- Категории -->
-    <div class="categories">
 
-        <a href="?category=all" class="category-btn">
-            All
+        <a href="/shopping_cart/" class="cart-btn">
+            {{ t.cart }}
         </a>
 
-        {% for category in categories %}
-            <a href="?category={{ category.id }}" class="category-btn">
-                {{ category.name }}
-            </a>
-        {% endfor %}
-
     </div>
 
-    <!-- Карточки блюд -->
-    <div class="menu">
+</div>
 
-        {% for dish in dishes %}
 
-        <div class="card">
 
-            <!-- Переход на страницу блюда -->
-            <a href="{% url 'dish-detail' dish.id %}" class="card-link">
 
-                <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
+<div class="menu-title">
+    <h1>{{ t.menu }}</h1>
+</div>
 
-                <div class="info">
 
-                    <h2>{{ dish.name }}</h2>
+<div class="categories">
 
-                </div>
+    <a href="?category=all" class="category-btn">
+        All
+    </a>
 
-            </a>
+    {% for category in categories %}
+        <a href="?category={{ category.id }}" class="category-btn">
+            {{ category.name }}
+        </a>
+    {% endfor %}
 
-            <div class="bottom">
+</div>
 
-                <span class="price">
-                    {{ dish.price }} ₴
-                </span>
 
-                <a href="{% url 'shopping_cart:add_to_cart' dish.id %}">
-                    <button class="plus">
-                        +
-                    </button>
-                </a>
+<div class="menu">
 
+    {% for dish in dishes %}
+
+    <div class="card">
+
+        <a href="{% url 'dish-detail' dish.id %}" class="card-link">
+
+            <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
+
+            <div class="info">
+                <h2>{{ dish.name }}</h2>
             </div>
+
+        </a>
+
+        <div class="bottom">
+
+            <span class="price">
+                {{ dish.price }} ₴
+            </span>
+
+            <a href="{% url 'shopping_cart:add_to_cart' dish.id %}">
+                <button class="plus">+</button>
+            </a>
 
         </div>
 
-        {% empty %}
-
-        <h2 style="text-align:center; width:100%;">
-            Блюд нет
-        </h2>
-
-        {% endfor %}
-
     </div>
+
+    {% empty %}
+
+    <h2 class="empty-menu">
+        {{ t.no_dishes }}
+    </h2>
+
+    {% endfor %}
+
+</div>
+
+
+<footer class="footer">
+    <p>© 2025 Restaurant</p>
+</footer>
 
 </body>
 </html>
