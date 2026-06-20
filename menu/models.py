@@ -9,6 +9,10 @@ class Category(models.Model):
     
 
 
+
+
+
+
 class Dish(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
