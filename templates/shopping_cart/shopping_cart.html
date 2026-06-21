@@ -11,44 +11,67 @@
 </head>
 <body>
 
-    <!-- Кнопка назад -->
     <a href="/menu/" class="back-btn">
         ← {{ t.menu }}
     </a>
 
-    <!-- Корзина -->
-    <div class="cart">
 
-        <h1>{{ t.cart_title }}</h1>
 
-        {% if dishes %}
 
-            {% for dish in dishes %}
 
-            <div class="cart-item">
 
-                <div>
-                    <strong>{{ dish.name }}</strong>
-                    <p>{{ dish.price }} ₴</p>
-                </div>
+    <h1>{{ t.cart_title }}</h1>
 
-                <a href="{% url 'shopping_cart:remove_from_cart' dish.id %}" class="remove">
-                    <button>-</button>
+    {% if cart_items %}
+
+        {% for item in cart_items %}
+
+        <div class="cart-item">
+
+            <div class="dish-info">
+                <strong>{{ item.dish.name }}</strong>
+                <p>{{ item.dish.price }} ₴</p>
+            </div>
+
+            <div class="quantity">
+
+                <a href="{% url 'shopping_cart:decrease_quantity' item.id %}"
+                   class="qty-btn">
+                    -
+                </a>
+
+                <span class="qty-count">
+                    {{ item.quantity }}
+                </span>
+
+                <a href="{% url 'shopping_cart:increase_quantity' item.id %}"
+                   class="qty-btn">
+                    +
                 </a>
 
             </div>
 
-            {% endfor %}
+            <div class="item-total">
+                {{ item.dish.price|floatformat:0 }} ₴ × {{ item.quantity }}
+            </div>
 
-        {% else %}
+                <a href="{% url 'shopping_cart:remove_from_cart' item.id %}"
+            class="remove-btn">
+                🗑
+                </a>
 
-            <h2 class="A">{{ t.empty_cart }}</h2>
+        </div>
 
-        {% endif %}
+        {% endfor %}
 
-    </div>
+    {% else %}
 
-    <!-- Нижняя панель -->
+        <h2 class="empty-cart">
+            {{ t.empty_cart }}
+        </h2>
+
+    {% endif %}
+
     <div class="cart-footer">
 
         <h2>
@@ -61,11 +84,9 @@
 
     </div>
 
-
-<footer class="footer">
-    <p>© 2025 Restaurant</p>
-</footer>
-
+    <footer class="footer">
+        <p>© 2025 Restaurant</p>
+    </footer>
 
 </body>
 </html>

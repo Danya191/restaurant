@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import Order
 from translations import LANGUAGES
+from shopping_cart.models import CartItem
 
 def order(request):
 
     lang = request.session.get("lang", "ru")
-    total = request.session.get('total', 0)
+    total = 0
+
+    cart_items = CartItem.objects.filter(user=request.user)
+
+    for item in cart_items:
+        total += item.dish.price * item.quantity
 
     if request.method == 'POST':
         name = request.POST.get('name')

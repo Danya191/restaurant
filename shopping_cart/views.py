@@ -10,19 +10,20 @@ from translations import LANGUAGES
 from django.shortcuts import redirect, render
 from menu.models import Dish
 
+from .models import CartItem
+
 def add_to_cart(request, dish_id):
-    print("CLICK WORKS")
 
-    cart = request.session.get('cart', [])
+    item, created = CartItem.objects.get_or_create(
+        user=request.user,
+        dish_id=dish_id
+    )
 
-    cart.append(dish_id)
-
-    request.session['cart'] = cart  # ← ВАЖНО
-
-    print("NEW CART:", cart)  # ← добавь
+    if not created:
+        item.quantity += 1
+        item.save()
 
     return redirect('shopping_cart:cart')
-
 
 
 
@@ -30,36 +31,33 @@ def cart(request):
 
     lang = request.session.get("lang", "ru")
 
-    cart = request.session.get('cart', [])
+    cart_items = CartItem.objects.filter(
+        user=request.user
+    )
 
-    dishes = []
     total = 0
 
-    for dish_id in cart:
-        try:
-            dish = Dish.objects.get(id=dish_id)
-            dishes.append(dish)
-            total += dish.price
-        except Dish.DoesNotExist:
-            pass
+    for item in cart_items:
+        total += item.dish.price * item.quantity
 
-    request.session['total'] = total
-
-    return render(request, 'shopping_cart/shopping_cart.html', {
-        'dishes': dishes,
-        'total': total,
-        't': LANGUAGES[lang]
-    })
+    return render(
+        request,
+        'shopping_cart/shopping_cart.html',
+        {
+            'cart_items': cart_items,
+            'total': total,
+            't': LANGUAGES[lang]
+        }
+    )
 
 
 
-def remove_from_cart(request, dish_id):
-    cart = request.session.get('cart', [])
+def remove_from_cart(request, item_id):
 
-    if dish_id in cart:
-        cart.remove(dish_id)
-
-    request.session['cart'] = cart
+    CartItem.objects.filter(
+        id=item_id,
+        user=request.user
+    ).delete()
 
     return redirect('shopping_cart:cart')
 
@@ -67,6 +65,35 @@ def remove_from_cart(request, dish_id):
 
 def cart_page(request):
     return render(request, 'shoping_cart.html')
+
+
+def increase_quantity(request, item_id):
+
+    item = CartItem.objects.get(
+        id=item_id,
+        user=request.user
+    )
+
+    item.quantity += 1
+    item.save()
+
+    return redirect('shopping_cart:cart')
+
+
+def decrease_quantity(request, item_id):
+
+    item = CartItem.objects.get(
+        id=item_id,
+        user=request.user
+    )
+
+    if item.quantity > 1:
+        item.quantity -= 1
+        item.save()
+    else:
+        item.delete()
+
+    return redirect('shopping_cart:cart')
 
 
 
